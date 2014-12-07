@@ -1,0 +1,56 @@
+
+
+ 
+
+
+<div class="list-group"
+	style="margin-left: 20%; margin-right: 40%; margin-top: 5%">
+	<div class="list-group-item" ng-repeat="tweet in dataset"
+		style="padding-bottom: 10px; ">
+		<table width="100%" style="height: 1px;" cellpadding="10" cellspacing="0" border="0">
+			<tr>
+				<td width="50px">
+					<h3>{{tweet.likes}}</h3>
+					<img ng-src="{{tick[$index]}}" ng-init="InitimgChange($index,tweet)" style="height: 30px; width: 30px" ng-click="INClike($index,tweet)">
+				</td>
+				<td width="25%" valign="top">
+				    <img alt="prof pic" ng-src={{tweet.image}} class="thumbnail" ng-click="showModal(tweet)">
+					<p style="text-align: center; margin-bottom: 0px;">{{tweet.author}}</p>
+				</td>
+				<td>
+					<p>{{tweet.quote}}</p>
+
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3" style="padding:1px;">
+				<div style="height: 15px;/* border-top-style: solid;border-top-color: #C0C0C0;border-top-width: 1px; */padding: 1px;margin: 5px;">
+					<p id="commentID" class="pull-left" ng-click="commentWindow($index)">Comments <span class="glyphicon glyphicon-comment"/></p>
+					<a href="#" class="pull-right" ng-click="showModal(tweet)"><span class="glyphicon glyphicon-globe"/> Details</a>
+				</div>
+				</td>
+			</tr>
+			<div id="comment" >
+			<tr ng-show=showComm[$index] style="background-color:#F0F0F0 ; solid;border-color: #C0C0C0;border-width: 1px;">
+				<td colspan="3">
+				 <!--   <p>{{newComment}}</p> -->
+				   <div class="input-group" style="width: 100%;margin-bottom : 20px;">
+                   <input  class="form-control" ng-model="newComment[$index]" style="width : '100%';" placeholder="Open up your mind...." ngEnter>
+                   <span class="input-group-btn">
+                        <button type="button" class="btn btn-default"  ng-click="addComment($index)">Post</button>
+                    </span>
+                   </div>
+                   	<div ng-repeat="comment in tweet.comments" style="padding : 5px;border-bottom-style: solid;border-bottom-color: #C0C0C0;border-bottom-width: 1px;border-top-style: solid;border-top-color: #C0C0C0;border-top-width: 1px;">
+                   		    <img alt="prof pic" ng-src={{tweet.image}} class="thumbnail pull-left" width="50px" height="50px" style= "margin: 0 15px 5px 0;"/>
+                   	  		<p style="padding: 10px;margin-bottom: 10px;">{{comment}}</p>
+                   	</div>
+                	
+				</td>
+			</tr>
+			</div>
+		</table>
+	</div>
+</div>
+
+<!-- <input type="button" value="click" ng-click="showModal(tweet)"/>
+ -->

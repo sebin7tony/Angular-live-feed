@@ -1,0 +1,68 @@
+
+
+<div class="container" >
+	
+	<div class="container">
+		<div class="row" style="border-bottom: 1px;border-bottom-style: solid;padding: 10px;">
+			<div class="col-lg-3" style="">
+				<img alt="photo" ng-src={{profileData.image}} style="width:250px;height:375px;">
+			</div>
+			<div class="col-lg-9">
+				<div class="jumbotron" style="padding-top: 10px;">
+					<h1>{{profileData.name}}</h1>
+					<p>{{profileData.description}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3"></div>
+			<div class="col-lg-9">
+				<div class="list-group">
+					<div class="list-group-item" ng-repeat="post in profileData.posts">		
+						<table width="100%" style="height: 1px;" cellpadding="10" cellspacing="0" border="0">
+							<tr>
+								<td width="50px">
+									<h3>{{post.likes}}</h3>
+								</td>
+								<td width="25%" valign="top">
+				    				<img alt="prof pic" ng-src={{profileData.image}} class="thumbnail" style="width:50px;height:75px;">
+									<p style="text-align: center; margin-bottom: 0px;">{{profileData.name}}</p>
+								</td>
+								<td>
+									<p>{{post.quote}}</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3" style="padding:1px;">
+									<div style="height: 15px;/* border-top-style: solid;border-top-color: #C0C0C0;border-top-width: 1px; */padding: 1px;margin: 5px;">
+										<p id="commentID" class="pull-left" ng-click="commentWindow($index)">Comments <span class="glyphicon glyphicon-comment"/></p>
+										<a href="#" class="pull-right"><span class="glyphicon glyphicon-globe"/> Details</a>
+									</div>
+								</td>
+							</tr>
+							<div id="comment" >
+							<tr ng-show=showComm[$index] style="background-color:#F0F0F0 ; solid;border-color: #C0C0C0;border-width: 1px;">
+								<td colspan="3">
+									 <!--   <p>{{newComment}}</p> -->
+				   					<div class="input-group" style="width: 100%;margin-bottom : 20px;">
+                   						<input  class="form-control" ng-model="newComment[$index]" style="width : '100%';" placeholder="Open up your mind...." ngEnter>
+                   						<span class="input-group-btn">
+                      	  					<button type="button" class="btn btn-default"  ng-click="addComment($index)">Post</button>
+                    					</span>
+                   					</div>
+                   					<div ng-repeat="comment in tweet.comments" style="padding : 5px;border-bottom-style: solid;border-bottom-color: #C0C0C0;border-bottom-width: 1px;border-top-style: solid;border-top-color: #C0C0C0;border-top-width: 1px;">
+                   		    			<img alt="prof pic" ng-src={{tweet.image}} class="thumbnail pull-left" width="50px" height="50px" style= "margin: 0 15px 5px 0;"/>
+                   	  					<p style="padding: 10px;margin-bottom: 10px;">{{comment}}</p>
+                   					</div>
+                	
+								</td>
+							</tr>
+							</div>
+						</table>			
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
